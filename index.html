@@ -3,30 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Breathing App Pre-Release V1.0.5</title>
+  <title>Breatheful 1.1.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
 <body>
   <div id="loading-screen">
+    <h1 id="ls-logo">Breatheful</h1>
     <p>Focus on your breathing</p>
     <p>Nothing else matters in this moment</p>
   </div>
 
-  <div id="app-container">
-    <div><img id="audioswitch" src="img/mute.svg" role="button"/></div>
+  <div id="app-container" >
+
+    <div id="breakout"></div>
+    <div class="dropdown">
+      <div><img id="audioswitch" src="img/mute.svg" onclick="showTracks()"/></div>
+      <div class="dropdown-content animate__animated animate__fadeIn" id="dropdown-display">
+        <div class="dropdown-option">
+          <img src="img/mute.svg" alt="No Audio" onclick="specificTrack(0)">
+        </div>
+        <div class="dropdown-option">
+          <img src="img/rain.svg" alt="Rain Audio" onclick="specificTrack(1)">
+        </div>
+        <div class="dropdown-option">
+          <img src="img/waves.svg" alt="Waves Audio" onclick="specificTrack(2)">
+        </div>
+        <div class="dropdown-option">
+          <img src="img/forest.svg" alt="Forest Audio" onclick="specificTrack(3)">
+        </div>
+        <div class="dropdown-option">
+          <img src="img/campfire.svg" alt="Campfire Audio" onclick="specificTrack(4)">
+        </div>
+        <div class="dropdown-option">
+          <img class="icon" src="img/fan.svg" alt="Fan Audio" onclick="specificTrack(5)">
+        </div>
+      </div>
+    </div>
     <div id="track-popup"></div>
+
     <div><img id="lightswitch" src="img/light-off.svg" onclick="toggleLights()" role="button"/></div>
-    <div class="breathing-Circle"><img id="circleimage" src = "img/circle-grey.svg" alt="My Happy SVG" width="250px" height="250px"/></div>
     
+    <div class="breathing-Circle"><img id="circleimage" src = "img/circle-grey.svg" alt="My Happy SVG" width="250px" height="250px"/></div>
     <p class="breathing-text">Breathe In</p>
     <p id="phrase" onclick="randomPhrase()"></p>
-
     <button id="breathingModeButton"><p>Standard</p></button>
+
+    <div><img id="helpButton" src="img/info.svg" onclick="helpBreathe()"/></div>
+  </div>
+
+  <div id="help-container">
+    <div id="help-textbox">
+      <h2 class="helpHeader">Tips to Calmer Breathing</h2>
+      <p class="helpText">• Choose a quiet, comfortable space for calm breathing.</p>
+      <p class="helpText">• Sit or lie down with relaxed yet proper posture.</p>
+      <p class="helpText">• Breathe slowly and deeply through your nose.</p>
+      <p class="helpText">• Engage your diaphragm; feel your abdomen rise.</p>
+      <p class="helpText">• Exhale slowly, allowing your abdomen to contract.</p>
+      <p class="helpText">• Focus on your breath, stay present, and relax.</p>
+      <p class="helpText">• Count or visualize to enhance calm breathing practice.</p>
+      <p class="helpText">• Be patient and persistent; it improves with regularity.</p>
+      <p class="helpText">• Calm breathing reduces stress and promotes relaxation.</p>
+      <p class="helpText">• Practice calm breathing for a few minutes each day.</p>
+    </div>
+    <button id="backButton" onclick="backButton()"><p>Back</p></button>
   </div>
 
   <script src="js/script.js"></script>
+
 </body>
 </html>

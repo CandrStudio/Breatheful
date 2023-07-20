@@ -65,7 +65,7 @@ window.addEventListener('load', function() {
         loadingScreen.style.display = 'none';
         var appContainer = document.getElementById('app-container');
         appContainer.style.opacity = '1';
-      }, 1000);
+      }, 500);
     }, 2500);})
   
 
@@ -77,7 +77,7 @@ const breathingText = document.querySelector('.breathing-text');
 function breatheIn() {
 
   if (breathingMode == 'Standard') {breatheText = 'Just '} 
-  else if (breathingMode == 'Calm') { breatheText = 'Calm '}
+  else if (breathingMode == 'Calm') { breatheText = 'Calmly '}
   else if (breathingMode == 'Deep') { breatheText = 'Deep '}
   else if (breathingMode == 'Sleep') { breatheText = 'Sleepy '}
   else {breatheText = ''}
@@ -94,7 +94,7 @@ function breatheIn() {
 function breatheOut() {
 
   if (breathingMode == 'Standard') {breatheText = 'Just '} 
-  else if (breathingMode == 'Calm') { breatheText = 'Calm '}
+  else if (breathingMode == 'Calm') { breatheText = 'Calmly '}
   else if (breathingMode == 'Deep') { breatheText = 'Deep '}
   else if (breathingMode == 'Sleep') { breatheText = 'Sleepy '}
   else {breatheText = ''}
@@ -186,8 +186,6 @@ breatheIn();
 
     }
   }
-
-  
 
 
 //Load Thoughts JSON
@@ -292,7 +290,112 @@ function randomPhrase() {
     "Feel life's rhythm.",
     "Surrender to serenity.",
     "One breath at a time.",
-    "Listen to your heart."
+    "Listen to your heart.",
+    "Relax and breathe, find peace.",
+    "Mindfulness brings inner tranquility.",
+    "Take a deep breath, release tension.",
+    "Silence the mind, embrace serenity.",
+    "Breathe in calm, exhale stress.",
+    "Meditate to quiet the mind.",
+    "Inhale clarity, exhale distractions.",
+    "Find stillness in the present moment.",
+    "Focus on your breath, find balance.",
+    "Let go of worries with each exhale.",
+    "Create space for calmness within.",
+    "Connect with your breath, find peace.",
+    "Breathe deeply, let go of anxiety.",
+    "Meditation calms the racing thoughts.",
+    "Inhale positivity, exhale negativity.",
+    "Embrace the power of deep breaths.",
+    "Find solace in the rhythm of breathing.",
+    "Quiet the mind, awaken inner stillness.",
+    "Breathe in energy, exhale fatigue.",
+    "Let your breath anchor your presence.",
+    "Calm your mind through steady breaths.",
+    "Meditation opens the door to serenity.",
+    "Inhale peace, exhale restlessness.",
+    "Find refuge in the breath's gentle flow.",
+    "Release tension with every exhale.",
+    "Breathe deeply, invite tranquility.",
+    "Meditate to find inner harmony.",
+    "Inhale calmness, exhale agitation.",
+    "Connect with your breath, find peace.",
+    "Release stress with each conscious breath.",
+    "Breathe in calmness, exhale anxiety.",
+    "Meditation soothes the restless soul.",
+    "Inhale serenity, exhale worries.",
+    "Find solace in mindful exhales.",
+    "Center yourself through rhythmic breathing.",
+    "Inner peace resides in mindful stillness.",
+    "Harness the power of focused breath.",
+    "Embrace the calmness within you.",
+    "Meditation is a gateway to serenity.",
+    "Inhale peace, exhale chaos.",
+    "Be present in the soothing breaths.",
+    "Find harmony through mindful inhalation.",
+    "Calmness lies within each deep breath.",
+    "Meditate to restore balance within.",
+    "Breathe deeply, find your calm.",
+    "Still your mind, unlock tranquility.",
+    "Let each breath guide you home.",
+    "Breathe in, let stress out.",
+    "Meditation soothes the restless soul.",
+    "Inhale tranquility, exhale worries.",
+    "Peaceful silence whispers inner calm.",
+    "Breathe in, let stress out.",
+    "Meditation soothes the restless soul.",
+    "Find solace in mindful exhales.",
+    "Center yourself through rhythmic breathing.",
+    "Inner peace resides in mindful stillness.",
+    "Harness the power of focused breath.",
+    "Embrace the calmness within you.",
+    "Meditation is a gateway to serenity.",
+    "Inhale peace, exhale chaos.",
+    "Be present in the soothing breaths.",
+    "Find harmony through mindful inhalation.",
+    "Calmness lies within each deep breath.",
+    "Meditate to restore balance within.",
+    "Breathe deeply, find your calm.",
+    "Still your mind, unlock tranquility.",
+    "Let each breath guide you home.",
+    "Breathe in, let stress out.",
+    "Meditation soothes the restless soul.",
+    "Inhale tranquility, exhale worries.",
+    "Peaceful silence whispers inner calm.",
+    "Breathe in, let stress out.",
+    "Meditation soothes the restless soul.",
+    "Find solace in mindful exhales.",
+    "Center yourself through rhythmic breathing.",
+    "Inner peace resides in mindful stillness.",
+    "Harness the power of focused breath.",
+    "Embrace the calmness within you.",
+    "Meditation is a gateway to serenity.",
+    "Inhale peace, exhale chaos.",
+    "Be present in the soothing breaths.",
+    "Find harmony through mindful inhalation.",
+    "Calmness lies within each deep breath.",
+    "Meditate to restore balance within.",
+    "Breathe deeply, find your calm.",
+    "Still your mind, unlock tranquility.",
+    "Let each breath guide you home.",
+    "Breathe in, let stress out.",
+    "Meditation soothes the restless soul.",
+    "Inhale tranquility, exhale worries.",
+    "Peaceful silence whispers inner calm.",
+    "Breathe in, let stress out.",
+    "Meditation soothes the restless soul.",
+    "Find solace in mindful exhales.",
+    "Center yourself through rhythmic breathing.",
+    "Inner peace resides in mindful stillness.",
+    "Harness the power of focused breath.",
+    "Embrace the calmness within you.",
+    "Meditation is a gateway to serenity.",
+    "Inhale peace, exhale chaos.",
+    "Be present in the soothing breaths.",
+    "Find harmony through mindful inhalation.",
+    "Calmness lies within each deep breath.",
+    "Meditate to restore balance within.",
+    "Breathe deeply, find your calm."
   ]
 
   var randomIndex = Math.floor(Math.random() * phrases.length);
@@ -304,33 +407,26 @@ function randomPhrase() {
 
 
 var audioTracks = [
-  { name: 'No Audio', src: 'null'},
-  { name: 'Rain', src: 'aud/rain.wav '},
-  { name: 'Waves', src: 'aud/beach.wav'},
-  { name: 'Campfire', src: 'aud/campfire.wav '},
-  { name: 'Fan', src: 'aud/fan.wav'}
+  { name: 'Quiet', src: 'null'}, //0
+  { name: 'Rain', src: 'aud/rain.wav '},//1
+  { name: 'Waves', src: 'aud/beach.wav'},//2
+  { name: 'Forest', src: 'aud/forest.wav'},//3
+  { name: 'Campfire', src: 'aud/campfire.wav '},//4
+  { name: 'Fan', src: 'aud/fan.wav'}//5
 ];
 
 var audioIcons = [
-  { name: 'No Audio', src: 'img/mute.svg'},
-  { name: 'Rain', src: 'img/rain.svg'},
-  { name: 'Waves', src: 'img/waves.svg'},
-  { name: 'Campfire', src: 'img/campfire.svg'},
-  { name: 'Fan', src: 'img/fan.svg'}
+  { name: 'Quiet', src: 'img/mute.svg'},//0
+  { name: 'Rain', src: 'img/rain.svg'},//1
+  { name: 'Waves', src: 'img/waves.svg'},//2
+  { name: 'Forest', src: 'img/forest.svg'},//3
+  { name: 'Campfire', src: 'img/campfire.svg'},//4
+  { name: 'Fan', src: 'img/fan.svg'}//5
 ];
 
 
 var currentTrackIndex = 0;
 var audio = new Audio(); // Create an Audio object
-
-// Track button event listener
-document.getElementById('audioswitch').addEventListener('click', function() {
-  cycleTrack();
-  cycleIcon();
-  showTrackPopup();
-});
-
-
 
 function cycleIcon() {
   var image = document.getElementById("audioswitch");
@@ -347,8 +443,8 @@ function cycleTrack() {
   audio.play();
 }
 
-function showTrackPopup() {
-  var trackName = audioTracks[currentTrackIndex].name;
+function showTrackPopup(songURL) {
+  var trackName = audioTracks[songURL].name;
   var trackPopup = document.getElementById('track-popup');
   trackPopup.textContent = trackName;
 
@@ -357,5 +453,68 @@ function showTrackPopup() {
   setTimeout(function() {
     var popup = document.getElementById("popup");
     trackPopup.style.opacity = "0";
-  }, 2000); // Hide the popup after 2 seconds
+  }, 2500); // Hide the popup after 2 seconds
+}
+
+function showTracks() {
+  var dropdownContent = document.getElementById('dropdown-display');
+  dropdownContent.style.display = 'block';
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'block';
+}
+
+function specificTrack(songURL) {
+  audio.src = audioTracks[songURL].src;
+  console.log("Playing audio track " + audio.src);
+  audio.loop = true;
+  audio.play();
+
+  var image = document.getElementById("audioswitch");
+  image.src = audioIcons[songURL].src;
+
+  var dropdownContent = document.getElementById('dropdown-display');
+  dropdownContent.style.display = 'none';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'none';
+
+  var trackName = audioTracks[songURL].name;
+  var trackPopup = document.getElementById('track-popup');
+  trackPopup.textContent = trackName;
+
+  trackPopup.style.opacity = "1";
+
+  setTimeout(function() {
+    var popup = document.getElementById("popup");
+    trackPopup.style.opacity = "0";
+  }, 2500); // Hide the popup after 2 seconds
+}
+
+
+document.getElementById("breakout").addEventListener("click", function(){
+  var dropdownContent = document.getElementById('dropdown-display');
+  dropdownContent.style.display = 'none';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'none';
+});
+
+
+
+function helpBreathe() {
+  var breatheContent = document.getElementById('app-container');
+  breatheContent.style.display = 'none';
+
+  var helpContent = document.getElementById('help-container');
+  helpContent.style.display = 'flex';
+
+}
+
+function backButton() {
+  var breatheContent = document.getElementById('app-container');
+  breatheContent.style.display = 'flex';
+
+  var helpContent = document.getElementById('help-container');
+  helpContent.style.display = 'none';
+
 }
