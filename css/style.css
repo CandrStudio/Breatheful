@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: 'Geologica', sans-serif;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+
+  }
+  
+  #loading-screen, #app-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    color: #484848;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: Geologica;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px;
+  }
+  
+  #loading-screen {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  
+  #app-container {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  h1, h2, p {
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+
+
+
+  .breathing-Circle {
+    width: 200px;
+    height: 200px;
+    transition: 5s ease-in, 4s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* border: 8px solid #727272;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    filter: blur(10px); */
+}
+
+.breathing-text {
+    position: absolute;
+    margin: auto;
+    font-size: 1.2rem;
+    font-family: 'Geologica', sans-serif;
+    color: #727272;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 2;
+}
+
+#phrase {
+    color: #727272;
+    display: flex;
+    position: absolute;
+    margin-top: 460px;
+    font-size: 0.8rem;
+    font-family: 'Geologica', sans-serif;
+    transition: 2s ease-in-out;
+}
+
+#breathingModeButton {
+  position: absolute;
+  bottom: 50px;
+  margin: auto;
+  font-size: 1.2rem;
+  font-family: 'Geologica', sans-serif;
+  color: #727272;
+  background: none;
+  text-align: center;
+  margin: 0;
+  padding: 5px 20px;
+  border: 2px solid;
+  border-radius: 100px;
+  text-decoration: none;
+}
+
+#lightswitch {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+#audioswitch {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+#track-popup {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0px 10px;
+  background-color: #727272;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  z-index: 100;
+}

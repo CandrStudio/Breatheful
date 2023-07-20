@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Breathing App Pre-Release V1.0.5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div id="loading-screen">
+    <p>Focus on your breathing</p>
+    <p>Nothing else matters in this moment</p>
+  </div>
+
+  <div id="app-container">
+    <div><img id="audioswitch" src="img/mute.svg" role="button"/></div>
+    <div id="track-popup"></div>
+    <div><img id="lightswitch" src="img/light-off.svg" onclick="toggleLights()" role="button"/></div>
+    <div class="breathing-Circle"><img id="circleimage" src = "img/circle-grey.svg" alt="My Happy SVG" width="250px" height="250px"/></div>
+    
+    <p class="breathing-text">Breathe In</p>
+    <p id="phrase" onclick="randomPhrase()"></p>
+
+    <button id="breathingModeButton"><p>Standard</p></button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
