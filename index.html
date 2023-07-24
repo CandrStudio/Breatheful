@@ -3,76 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Breatheful 1.1.0</title>
+  <title>Breatheful - 1.2.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <script defer data-domain="breatheful.app" src="https://plausible.io/js/script.js"></script> <!-- Disable for iOS Release-->
 </head>
 <body>
   <div id="loading-screen">
     <h1 id="ls-logo">Breatheful</h1>
-    <p>Focus on your breathing</p>
-    <p>Nothing else matters in this moment</p>
+    <p class="light-text phrase" id="launch-phrase">Nothing else matters in this moment</p>
   </div>
 
   <div id="app-container" >
-
     <div id="breakout"></div>
-    <div class="dropdown">
-      <div><img id="audioswitch" src="img/mute.svg" onclick="showTracks()"/></div>
-      <div class="dropdown-content animate__animated animate__fadeIn" id="dropdown-display">
-        <div class="dropdown-option">
-          <img src="img/mute.svg" alt="No Audio" onclick="specificTrack(0)">
-        </div>
-        <div class="dropdown-option">
-          <img src="img/rain.svg" alt="Rain Audio" onclick="specificTrack(1)">
-        </div>
-        <div class="dropdown-option">
-          <img src="img/waves.svg" alt="Waves Audio" onclick="specificTrack(2)">
-        </div>
-        <div class="dropdown-option">
-          <img src="img/forest.svg" alt="Forest Audio" onclick="specificTrack(3)">
-        </div>
-        <div class="dropdown-option">
-          <img src="img/campfire.svg" alt="Campfire Audio" onclick="specificTrack(4)">
-        </div>
-        <div class="dropdown-option">
-          <img class="icon" src="img/fan.svg" alt="Fan Audio" onclick="specificTrack(5)">
+    <div class="bottom-nav">
+      <!-- Light Switch -->
+      <div class="nav-item"><img id="lightswitch" src="img/ui-icon/light-off.svg" onclick="toggleLights()"/></div>
+      <!-- Audio Switch -->
+      <div class="nav-item"><img id="audioswitch" src="img/audio-icon/mute.svg" onclick="showTracks()"/></div>
+      <div class="audio-dropdown">
+        <div class="dropdown-content animate__animated animate__fadeIn" id="dropdown-display-audio">
+          <div class="dropdown-option margin-right">
+            <img src="img/audio-icon/mute.svg" alt="No Audio" onclick="specificTrack(0)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img src="img/audio-icon/rain.svg" alt="Rain Audio" onclick="specificTrack(1)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img src="img/audio-icon/waves.svg" alt="Waves Audio" onclick="specificTrack(2)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img src="img/audio-icon/forest.svg" alt="Forest Audio" onclick="specificTrack(3)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img src="img/audio-icon/campfire.svg" alt="Campfire Audio" onclick="specificTrack(4)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img class="icon" src="img/audio-icon/fan.svg" alt="Fan Audio" onclick="specificTrack(5)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img class="icon" src="img/audio-icon/piano.svg" alt="Piano Audio" onclick="specificTrack(6)">
+          </div>
+          <div class="dropdown-option margin-right">
+            <img class="icon" src="img/audio-icon/cat.svg" alt="Cat Audio" onclick="specificTrack(7)">
+          </div>
         </div>
       </div>
+      <!-- Breathing Switch -->
+      <div class="nav-item"><img id="breatheswitch" src="img/breathe-icon/Standard.svg" onclick="showBreathes()"/></div>
+      <div class="breathe-dropdown">
+        <div class="dropdown-content animate__animated animate__fadeIn" id="dropdown-display-breathe">
+          <div class="dropdown-option icon-text" onclick="specificBreathing(0)">
+            <img src="img/breathe-icon/Standard.svg" alt="Standarding Breathing"><p class="breathe-icon-text margin-right-small">Standard</p>
+          </div>
+          <div class="dropdown-option icon-text"  onclick="specificBreathing(1)">
+            <img src="img/breathe-icon/Calm.svg" alt="Calm Breathing"><p class="breathe-icon-text margin-right-small">Calm</p>
+          </div>
+          <div class="dropdown-option icon-text" onclick="specificBreathing(2)">
+            <img src="img/breathe-icon/Deep.svg" alt="Deep Breathing"><p class="breathe-icon-text margin-right-small">Deep</p>
+          </div>
+          <div class="dropdown-option icon-text" onclick="specificBreathing(3)">
+            <img src="img/breathe-icon/Sleep.svg" alt="Sleepy Breathing"><p class="breathe-icon-text margin-right-small">Sleep</p>
+          </div>
+          <div class="dropdown-option icon-text" onclick="specificBreathing(4)">
+            <img src="img/breathe-icon/Zen.svg" alt="Zenful Breathing"><p class="breathe-icon-text margin-right-small">Zen</p>
+          </div>
+        </div>
+      </div>
+      <!-- Information Button --> 
+      <div class="nav-item"><img src="img/ui-icon/info.svg" onclick="helpBreathe()"/></div>
+
     </div>
-    <div id="track-popup"></div>
-
-    <div><img id="lightswitch" src="img/light-off.svg" onclick="toggleLights()" role="button"/></div>
     
-    <div class="breathing-Circle"><img id="circleimage" src = "img/circle-grey.svg" alt="My Happy SVG" width="250px" height="250px"/></div>
+    <div id="track-popup"></div>
+    
+    <div id="breathing-circle"><img id="circleimage" src = "img/breathe-circle/circle-grey.svg" alt="Breathing Circle" width="250px" height="250px"/></div>
     <p class="breathing-text">Breathe In</p>
-    <p id="phrase" onclick="randomPhrase()"></p>
-    <button id="breathingModeButton"><p>Standard</p></button>
+    <p class="phrase" id="breathe-phrase" onclick="randomPhrase()">Test</p>
 
-    <div><img id="helpButton" src="img/info.svg" onclick="helpBreathe()"/></div>
+
+
   </div>
 
   <div id="help-container">
     <div id="help-textbox">
-      <h2 class="helpHeader">Tips to Calmer Breathing</h2>
+      <!-- Tips for Breathing -->
+      <h2 class="helpHeader">Tips for Breathing</h2>
       <p class="helpText">• Choose a quiet, comfortable space for calm breathing.</p>
       <p class="helpText">• Sit or lie down with relaxed yet proper posture.</p>
       <p class="helpText">• Breathe slowly and deeply through your nose.</p>
-      <p class="helpText">• Engage your diaphragm; feel your abdomen rise.</p>
+      <p class="helpText">• Breathe through your stomach, not your chest.</p>
       <p class="helpText">• Exhale slowly, allowing your abdomen to contract.</p>
       <p class="helpText">• Focus on your breath, stay present, and relax.</p>
       <p class="helpText">• Count or visualize to enhance calm breathing practice.</p>
-      <p class="helpText">• Be patient and persistent; it improves with regularity.</p>
       <p class="helpText">• Calm breathing reduces stress and promotes relaxation.</p>
       <p class="helpText">• Practice calm breathing for a few minutes each day.</p>
+      <!-- Benefits of Better Breathing -->
+      <h2 class="helpHeader">Benefits of Better Breathing</h2>
+      <p class="helpText">• Balanced levels of oxygen & carbon dioxide in the blood.</p>
+      <p class="helpText">• Reduced levels of stress hormones in the blood.</p>
+      <p class="helpText">• Increased physical energy & improved immune system.</p>
+      <p class="helpText">• Increased feelings of calm and wellbeing.</p>
     </div>
-    <button id="backButton" onclick="backButton()"><p>Back</p></button>
+    <div id="backButton"><img src="img/ui-icon/back.svg" onclick="backButton()"/></div>
   </div>
 
   <script src="js/script.js"></script>
-
+  
 </body>
 </html>

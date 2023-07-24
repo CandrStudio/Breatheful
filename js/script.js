@@ -23,13 +23,15 @@ function checkLights() {
   if (lights === 'true') {
     console.log("Lights are currently on");
     body.style.backgroundColor = "#F6F6F6";
-    image.src = "img/light-on.svg";
+    image.src = "img/ui-icon/light-on.svg";
   } else {
     console.log("Lights are currently off");
     body.style.backgroundColor = "black";
-    image.src = "img/light-off.svg";
+    image.src = "img/ui-icon/light-off.svg";
   }
 }
+
+
 
 function toggleLights() {
   var body = document.body;
@@ -42,17 +44,16 @@ function toggleLights() {
     console.log("Lights are currently on, so we are going to turn them off");
     body.style.backgroundColor = "black";
     body.style.transition = 'background-color 3s ease';
-    image.src = "img/light-off.svg";
+    image.src = "img/ui-icon/light-off.svg";
     localStorage.setItem("lights", "false");
   } else {
     console.log("Lights are currently off, so we are going to turn them on");
     body.style.backgroundColor = "#F6F6F6";
     body.style.transition = 'background-color 3s ease';
-    image.src = "img/light-on.svg";
+    image.src = "img/ui-icon/light-on.svg";
     localStorage.setItem("lights", "true");
   }
 }
-
 //Launch and Breathe Windows
 window.addEventListener('load', function() {
     // Show loading screen for 2.5 seconds
@@ -71,124 +72,286 @@ window.addEventListener('load', function() {
 
 
 //Breathing Circle Animation
-const circle = document.querySelector('.breathing-Circle');
+const circle = document.querySelector('#breathing-circle');
 const breathingText = document.querySelector('.breathing-text');
 
 function breatheIn() {
 
-  if (breathingMode == 'Standard') {breatheText = 'Just '} 
-  else if (breathingMode == 'Calm') { breatheText = 'Calmly '}
-  else if (breathingMode == 'Deep') { breatheText = 'Deep '}
-  else if (breathingMode == 'Sleep') { breatheText = 'Sleepy '}
+  if (breathingMode == 'Standard') {
+    breatheText = 'Just ';    
+    BreatheInTime = 5000;} 
+  else if (breathingMode == 'Calm') { 
+    breatheText = 'Calmly ';
+    BreatheInTime = 5000;}
+  else if (breathingMode == 'Deep') { 
+    breatheText = 'Deep ';
+    BreatheInTime = 5000;}
+  else if (breathingMode == 'Sleep') { 
+    breatheText = 'Sleepy ';
+    BreatheInTime = 5000;}
+  else if (breathingMode == 'Zen') { 
+    breatheText = 'Zen '
+    BreatheInTime = 10000;}
   else {breatheText = ''}
 
   circle.style.transform = 'scale(1.5)';
   breathingText.textContent = breatheText + 'Breathe In';
   breathingText.style.opacity = '1';
+
   setTimeout(() => {
       breathingText.style.opacity = '0';
-  }, 4000);
+  }, BreatheInTime);
   setTimeout(breatheOut, BreatheInTime);
 }
 
 function breatheOut() {
 
-  if (breathingMode == 'Standard') {breatheText = 'Just '} 
-  else if (breathingMode == 'Calm') { breatheText = 'Calmly '}
-  else if (breathingMode == 'Deep') { breatheText = 'Deep '}
-  else if (breathingMode == 'Sleep') { breatheText = 'Sleepy '}
+  if (breathingMode == 'Standard') {
+    breatheText = 'Just ';
+    BreatheOutTime = 5000;} 
+  else if (breathingMode == 'Calm') { 
+    breatheText = 'Calmly ';
+    BreatheOutTime = 5000;}
+  else if (breathingMode == 'Deep') { 
+    breatheText = 'Deep ';
+    BreatheOutTime = 5000;}
+  else if (breathingMode == 'Sleep') { 
+    breatheText = 'Sleepy ';
+    BreatheOutTime = 5000;}
+  else if (breathingMode == 'Zen') { 
+    breatheText = 'Zen ';
+    BreatheOutTime = 10000;}
   else {breatheText = ''}
 
   circle.style.transform = 'scale(1)';
   breathingText.textContent = breatheText + 'Breathe Out';
   breathingText.style.opacity = '1';
+
   setTimeout(() => {
       breathingText.style.opacity = '0';
-  }, 3000);
+  }, BreatheOutTime);
   setTimeout(breatheIn, BreatheOutTime);
 }
 
 breatheIn();
 
+var breatheIcons = [
+  { name: 'Standard', src: 'img/breathe-icon/Standard.svg', option: 0},//0
+  { name: 'Calm', src: 'img/breathe-icon/Calm.svg', option: 1},//1
+  { name: 'Deep', src: 'img/breathe-icon/Deep.svg', option: 2},//2
+  { name: 'Sleep', src: 'img/breathe-icon/Sleep.svg', option: 3},//3
+  { name: 'Zen', src: 'img/breathe-icon/Zen.svg', option: 4},//4
+];
+
+//Audio Track Selection
+function specificBreathing(breatheOption) {
+  console.log("Running specificBreathing function with option")
+  var image = document.getElementById("breatheswitch");
+  image.src = breatheIcons[breatheOption].src;
 
 
 
-
- // Breathing mode button event listener
- breathingModeButton.addEventListener('click', function() {
-    switch (breathingMode) {
-      case 'Standard':
-        breathingMode = 'Calm';
-        break;
-      case 'Calm':
-        breathingMode = 'Deep';
-        break;
-      case 'Deep':
-        breathingMode = 'Sleep';
-        break;
-      case 'Sleep':
-        breathingMode = 'Standard';
-        break;
-
+  option = breatheIcons[breatheOption].option;
+  if (option === 0){
+    breatheInTime = 5000;
+    breatheOutTime = 5000;
+    breathingMode = "Standard";
     
-    }
-    breathingModeButton.textContent = breathingMode;
-    updateBreathingPattern();
-  });
+    circle.style.transition = '5s ease-in, 5s ease-out';
 
-  function updateBreathingPattern() {
+    var image = document.getElementById("circleimage");
+    image.src = "img/breathe-circle/circle-grey.svg"
+  } else if (option === 1){
+    breatheInTime = 6000;
+    breatheOutTime = 4000;
+    breathingMode = "Calm";
 
-    switch (breathingMode) {
-      case 'Standard':
-        breatheInTime = 5000;
-        breatheOutTime = 5000;
-        var breathingCircle = document.getElementsByClassName("breathing-Circle");
-        circle.style.transition = '5s ease-in, 5s ease-out';
+    circle.style.transition = '6s ease-in, 4s ease-out';
 
-        var image = document.getElementById("circleimage");
-        image.src = "img/circle-grey.svg"
+    var image = document.getElementById("circleimage");
+    image.src = "img/breathe-circle/circle-blue.svg"
+  } else if (option === 2) {
+    breatheInTime = 8000;
+    breatheOutTime = 4000;
+    breathingMode = "Deep";
 
-        //circle.style.border = '8px solid #727272';
-        break;
-      case 'Calm':
-        breatheInTime = 5000;
-        breatheOutTime = 4000;
-        var breathingCircle = document.getElementsByClassName("breathing-Circle");
-        circle.style.transition = '5s ease-in, 4s ease-out';
+    circle.style.transition = '8s ease-in, 4s ease-out';
 
-        var image = document.getElementById("circleimage");
-        image.src = "img/circle-blue.svg"
+    var image = document.getElementById("circleimage");
+    image.src = "img/breathe-circle/circle-purple.svg"
+  } else if (option === 3){
+    breatheInTime = 6000;
+    breatheOutTime = 5000;
+    breathingMode = "Sleep";
 
-        //circle.style.border = '8px solid #3C58A3';
-        break;
-      case 'Deep':
-        breatheInTime = 8000;
-        breatheOutTime = 6000;
-        var breathingCircle = document.getElementsByClassName("breathing-Circle");
-        circle.style.transition = '8s ease-in, 6s ease-out';
+    circle.style.transition = '6s ease-in, 5s ease-out';
 
-        var image = document.getElementById("circleimage");
-        image.src = "img/circle-purple.svg"
+    var image = document.getElementById("circleimage");
+    image.src = "img/breathe-circle/circle-red.svg"
+  } else if (option === 4){
+    breatheInTime = 10000;
+    breatheOutTime = 10000;
+    breathingMode = "Zen";
 
-        //circle.style.border = '8px solid #633CA3';
-        break;
-      case 'Sleep':
-        breatheInTime = 6000;
-        breatheOutTime = 5000;
-        var breathingCircle = document.getElementsByClassName("breathing-Circle");
-        circle.style.transition = '6s ease-in, 5s ease-out';
+    circle.style.transition = '10s ease-in, 10s ease-out';
 
-        var image = document.getElementById("circleimage");
-        image.src = "img/circle-red.svg"
-
-        //circle.style.border = '8px solid #A33C3C';
-        break;
-
-    }
+    var image = document.getElementById("circleimage");
+    image.src = "img/breathe-circle/circle-green.svg"
   }
 
+  var dropdownContent = document.getElementById('dropdown-display-audio');
+  dropdownContent.style.display = 'none';
 
-//Load Thoughts JSON
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'none';
+
+  var trackName = breatheIcons[breatheOption].name;
+  var trackPopup = document.getElementById('track-popup');
+  trackPopup.textContent = trackName + " Breathing"
+
+  trackPopup.style.opacity = "1";
+
+
+  var image = document.getElementById("breatheswitch");
+  image.name = breatheIcons[breatheOption].name;
+
+  var dropdownContent = document.getElementById('dropdown-display-breathe');
+  dropdownContent.style.display = 'none';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'none';
+
+
+  setTimeout(function() {
+    var popup = document.getElementById("popup");
+    trackPopup.style.opacity = "0";
+  }, 2500); // Hide the popup after 2.5 seconds
+}
+
+
+function showBreathes() {
+  var dropdownContentBreathe = document.getElementById('dropdown-display-breathe');
+  dropdownContentBreathe.style.display = 'flex';
+
+  var dropdownContentAudio = document.getElementById('dropdown-display-audio');
+  dropdownContentAudio.style.display = 'none';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'block';
+}
+
+
+
+
+//Audio JSON
+var audioTracks = [
+  { name: 'Quiet', src: 'null'}, //0
+  { name: 'Rain', src: 'aud/rain.mp3'},//1
+  { name: 'Waves', src: 'aud/waves.mp3'},//2
+  { name: 'Forest', src: 'aud/forest.mp3'},//3
+  { name: 'Campfire', src: 'aud/campfire.mp3'},//4
+  { name: 'Fan', src: 'aud/fan.mp3'},//5
+  { name: 'Gentle Piano', src: 'aud/piano.mp3'},//4
+  { name: 'Purring Cat', src: 'aud/cat.mp3'}//5
+];
+
+var audioIcons = [
+  { name: 'Quiet', src: 'img/audio-icon/mute.svg'},//0
+  { name: 'Rain', src: 'img/audio-icon/rain.svg'},//1
+  { name: 'Waves', src: 'img/audio-icon/waves.svg'},//2
+  { name: 'Forest', src: 'img/audio-icon/forest.svg'},//3
+  { name: 'Campfire', src: 'img/audio-icon/campfire.svg'},//4
+  { name: 'Fan', src: 'img/audio-icon/fan.svg'},//5
+  { name: 'Piano', src: 'img/audio-icon/piano.svg'},//6
+  { name: 'Cat', src: 'img/audio-icon/cat.svg'}//7
+];
+
+//Audio Variables
+var currentTrackIndex = 0;
+var audio = new Audio(); // Create an Audio object
+
+//Show Audio Track Options
+function showTracks() {
+  var dropdownContentBreathe = document.getElementById('dropdown-display-breathe');
+  dropdownContentBreathe.style.display = 'none';
+
+  var dropdownContentAudio = document.getElementById('dropdown-display-audio');
+  dropdownContentAudio.style.display = 'flex';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'block';
+}
+
+//Audio Track Selection
+function specificTrack(songURL) {
+  audio.src = audioTracks[songURL].src;
+  console.log("Playing audio track " + audio.src);
+  audio.loop = true;
+  audio.play();
+
+  var image = document.getElementById("audioswitch");
+  image.src = audioIcons[songURL].src;
+
+  var dropdownContent = document.getElementById('dropdown-display-audio');
+  dropdownContent.style.display = 'none';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'none';
+
+  var trackName = audioTracks[songURL].name;
+  var trackPopup = document.getElementById('track-popup');
+  trackPopup.textContent = trackName;
+
+  trackPopup.style.opacity = "1";
+
+  setTimeout(function() {
+    var popup = document.getElementById("popup");
+    trackPopup.style.opacity = "0";
+  }, 2500); // Hide the popup after 2.5 seconds
+}
+
+
+
+
+//Create Breakout Button
+document.getElementById("breakout").addEventListener("click", function(){
+  var dropdownContentAudio = document.getElementById('dropdown-display-audio');
+  dropdownContentAudio.style.display = 'none';
+
+  var dropdownContentBreathe = document.getElementById('dropdown-display-breathe');
+  dropdownContentBreathe.style.display = 'none';
+
+  var breakout = document.getElementById('breakout');
+  breakout.style.display = 'none';
+});
+
+
+
+
+//Display Help Informational Page
+function helpBreathe() {
+  var breatheContent = document.getElementById('app-container');
+  breatheContent.style.display = 'none';
+
+  var helpContent = document.getElementById('help-container');
+  helpContent.style.display = 'flex';
+
+}
+
+//Hide Help Informational Page
+function backButton() {
+  var breatheContent = document.getElementById('app-container');
+  breatheContent.style.display = 'flex';
+
+  var helpContent = document.getElementById('help-container');
+  helpContent.style.display = 'none';
+
+}
+
+
+
+
+//Load Phrase JSON
 window.addEventListener('load', function() {
   randomPhrase()
 });
@@ -395,126 +558,125 @@ function randomPhrase() {
     "Find harmony through mindful inhalation.",
     "Calmness lies within each deep breath.",
     "Meditate to restore balance within.",
-    "Breathe deeply, find your calm."
+    "Breathe deeply, find your calm.",
+    "Pause and reconnect within.",
+    "Inhale love, exhale fear.",
+    "Let gratitude fill your heart.",
+    "Every moment is a gift.",
+    "Discover peace in simplicity.",
+    "Stillness is the gateway to insight.",
+    "Peaceful mind, joyful heart.",
+    "Breathe out negativity, breathe in positivity.",
+    "Meditation is self-discovery.",
+    "Find solace in nature's embrace.",
+    "Calmness anchors you to the present.",
+    "Be kind to yourself always.",
+    "The present moment is all there is.",
+    "Stillness is the language of the soul.",
+    "Embrace change with an open heart.",
+    "Quiet the mind, hear your soul.",
+    "Find beauty in the present chaos.",
+    "Compassion heals both giver and receiver.",
+    "Let go of judgment, embrace acceptance.",
+    "Serenity shines from within.",
+    "Breathe deeply, find your center.",
+    "The journey within is infinite.",
+    "Happiness lies in small moments.",
+    "Embrace uncertainty with courage.",
+    "Calmness nurtures creativity.",
+    "Your breath is your anchor.",
+    "Meditation is a path to wholeness.",
+    "Inhale possibilities, exhale limitations.",
+    "Connect with the energy of life.",
+    "Peace begins with a smile.",
+    "Trust the process of life.",
+    "Stillness is the rhythm of the universe.",
+    "Embrace the power of now.",
+    "Let your breath guide your thoughts.",
+    "Acceptance is the key to serenity.",
+    "Breathe in energy, breathe out doubt.",
+    "Meditation is food for the soul.",
+    "Inner peace blooms like a flower.",
+    "Release attachments, find freedom.",
+    "Calmness is a state of grace.",
+    "Inhale presence, exhale distractions.",
+    "Let love and compassion be your compass.",
+    "Quiet your mind, hear your intuition.",
+    "Simplicity is the essence of life.",
+    "Breathe deeply, invite peace.",
+    "The universe is within you.",
+    "Meditation is a sanctuary for the mind.",
+    "Inhale courage, exhale doubt.",
+    "Peace is found in the present.",
+    "Find your sanctuary in stillness.",
+    "Embrace impermanence with grace.",
+    "Let go of the need to control.",
+    "Calmness is the dance of the soul.",
+    "Breathe in joy, breathe out gratitude.",
+    "Meditation is a journey inward.",
+    "Inhale strength, exhale weakness.",
+    "Find wisdom in the silence.",
+    "Trust in the unfolding of life.",
+    "Embrace the beauty of the unknown.",
+    "Breathe deeply, release tension.",
+    "Meditation is the art of letting go.",
+    "Inhale balance, exhale chaos.",
+    "Peace resides in your heart.",
+    "Let your breath carry you home.",
+    "Discover peace through self-awareness.",
+    "Calmness is the song of the soul.",
+    "Breathe in stillness, exhale restlessness.",
+    "Meditation opens the door to serenity.",
+    "Inhale clarity, exhale confusion.",
+    "Surrender to the flow of life.",
+    "Embrace each moment as it is.",
+    "Breathe deeply, find your peace.",
+    "Meditation is a meeting with yourself.",
+    "Inhale compassion, exhale judgment.",
+    "Seek stillness amidst the noise.",
+    "Quiet the mind, find your truth.",
+    "Embrace the silence between thoughts.",
+    "Breathe in patience, breathe out tension.",
+    "Meditation is the language of the soul.",
+    "Inhale acceptance, exhale resistance.",
+    "Find harmony in the present moment.",
+    "Release the past, embrace the now.",
+    "Calmness is the dance of life.",
+    "Breathe in the beauty of existence.",
+    "Meditation is a journey of self-discovery.",
+    "Inhale gratitude, exhale complaints.",
+    "Let go of the need to be busy.",
+    "Embrace the stillness of the night.",
+    "Breathe deeply, find your center.",
+    "Meditation is the key to inner peace.",
+    "Inhale hope, exhale despair.",
+    "Discover yourself in the present.",
+    "Trust in the wisdom of life.",
+    "Embrace the power of silence.",
+    "Breathe in the light, exhale darkness.",
+    "Meditation is the art of being.",
+    "Inhale forgiveness, exhale resentment.",
+    "Find peace in the present chaos.",
+    "Let your breath be your guide.",
+    "Calmness is the gateway to bliss.",
+    "Breathe in awareness, breathe out distraction.",
+    "Meditation is the path to freedom.",
+    "Inhale strength, exhale fear.",
+    "Embrace the silence within.",
+    "Breathe deeply, find your peace."
   ]
 
-  var randomIndex = Math.floor(Math.random() * phrases.length);
-  var randomText = phrases[randomIndex];
+  //Randomize Index and Select Phrase
+  var randomIndex01 = Math.floor(Math.random() * phrases.length);
+  var randomIndex02 = Math.floor(Math.random() * phrases.length);
+  var randomText01 = phrases[randomIndex01];
+  var randomText02 = phrases[randomIndex02];
 
-  var phrase = document.getElementById("phrase");
-  phrase.innerHTML = randomText;
-}
+  //Launch Page
+  var launchphrase = document.getElementById("launch-phrase");
+  launchphrase.innerHTML = randomText01;
 
-
-var audioTracks = [
-  { name: 'Quiet', src: 'null'}, //0
-  { name: 'Rain', src: 'aud/rain.wav '},//1
-  { name: 'Waves', src: 'aud/beach.wav'},//2
-  { name: 'Forest', src: 'aud/forest.wav'},//3
-  { name: 'Campfire', src: 'aud/campfire.wav '},//4
-  { name: 'Fan', src: 'aud/fan.wav'}//5
-];
-
-var audioIcons = [
-  { name: 'Quiet', src: 'img/mute.svg'},//0
-  { name: 'Rain', src: 'img/rain.svg'},//1
-  { name: 'Waves', src: 'img/waves.svg'},//2
-  { name: 'Forest', src: 'img/forest.svg'},//3
-  { name: 'Campfire', src: 'img/campfire.svg'},//4
-  { name: 'Fan', src: 'img/fan.svg'}//5
-];
-
-
-var currentTrackIndex = 0;
-var audio = new Audio(); // Create an Audio object
-
-function cycleIcon() {
-  var image = document.getElementById("audioswitch");
-  image.src = audioIcons[currentTrackIndex].src;
-}
-
-function cycleTrack() {
-  currentTrackIndex = (currentTrackIndex + 1) % audioTracks.length;
-  // Set the source of the Audio object
-  audio.src = audioTracks[currentTrackIndex].src;
-  console.log("Playing audio track " + audio.src);
-  // Play the audio track with fade-in effect
-  audio.loop = true;
-  audio.play();
-}
-
-function showTrackPopup(songURL) {
-  var trackName = audioTracks[songURL].name;
-  var trackPopup = document.getElementById('track-popup');
-  trackPopup.textContent = trackName;
-
-  trackPopup.style.opacity = "1";
-
-  setTimeout(function() {
-    var popup = document.getElementById("popup");
-    trackPopup.style.opacity = "0";
-  }, 2500); // Hide the popup after 2 seconds
-}
-
-function showTracks() {
-  var dropdownContent = document.getElementById('dropdown-display');
-  dropdownContent.style.display = 'block';
-  var breakout = document.getElementById('breakout');
-  breakout.style.display = 'block';
-}
-
-function specificTrack(songURL) {
-  audio.src = audioTracks[songURL].src;
-  console.log("Playing audio track " + audio.src);
-  audio.loop = true;
-  audio.play();
-
-  var image = document.getElementById("audioswitch");
-  image.src = audioIcons[songURL].src;
-
-  var dropdownContent = document.getElementById('dropdown-display');
-  dropdownContent.style.display = 'none';
-
-  var breakout = document.getElementById('breakout');
-  breakout.style.display = 'none';
-
-  var trackName = audioTracks[songURL].name;
-  var trackPopup = document.getElementById('track-popup');
-  trackPopup.textContent = trackName;
-
-  trackPopup.style.opacity = "1";
-
-  setTimeout(function() {
-    var popup = document.getElementById("popup");
-    trackPopup.style.opacity = "0";
-  }, 2500); // Hide the popup after 2 seconds
-}
-
-
-document.getElementById("breakout").addEventListener("click", function(){
-  var dropdownContent = document.getElementById('dropdown-display');
-  dropdownContent.style.display = 'none';
-
-  var breakout = document.getElementById('breakout');
-  breakout.style.display = 'none';
-});
-
-
-
-function helpBreathe() {
-  var breatheContent = document.getElementById('app-container');
-  breatheContent.style.display = 'none';
-
-  var helpContent = document.getElementById('help-container');
-  helpContent.style.display = 'flex';
-
-}
-
-function backButton() {
-  var breatheContent = document.getElementById('app-container');
-  breatheContent.style.display = 'flex';
-
-  var helpContent = document.getElementById('help-container');
-  helpContent.style.display = 'none';
-
+  //Breathing Page
+  var breathephrase = document.getElementById("breathe-phrase");
+  breathephrase.innerHTML = randomText02;
 }

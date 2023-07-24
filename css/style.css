@@ -11,7 +11,7 @@ body {
   }
 
   #ls-logo {
-    padding:50px;
+    padding: 10px;
   }
   
   #loading-screen, #app-container, #help-container {
@@ -55,18 +55,13 @@ body {
 
 
 
-  .breathing-Circle {
+#breathing-circle {
     width: 200px;
     height: 200px;
     transition: 5s ease-in, 4s ease-out;
     display: flex;
     justify-content: center;
     align-items: center;
-   /* border: 8px solid #727272;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    filter: blur(10px); */
 }
 
 .breathing-text {
@@ -83,36 +78,18 @@ body {
     z-index: 2;
 }
 
-#phrase {
-    color: #727272;
-    display: flex;
-    position: absolute;
-    margin-top: 450px;
-    font-size: 0.8rem;
-    font-family: 'Geologica', sans-serif;
-    transition: 2s ease-in-out;
-}
-
-#breathingModeButton {
-  position: absolute;
-  bottom: 50px;
-  margin: auto;
-  font-size: 1.2rem;
-  font-family: 'Geologica', sans-serif;
+#breathe-phrase {
   color: #727272;
-  background: none;
-  text-align: center;
-  margin: 0;
-  padding: 5px 20px;
-  border: 2px solid;
-  border-radius: 100px;
-  text-decoration: none;
+  display: flex;
+  position: absolute;
+  margin-top: 450px;
+  font-size: 0.8rem;
+  font-family: 'Geologica', sans-serif;
+  transition: 2s ease-in-out;
 }
 
-#lightswitch {
-  position: absolute;
-  top: 25px;
-  right: 25px;
+.phrase {
+  display: flex;
 }
 
 #track-popup {
@@ -128,29 +105,33 @@ body {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 100px;
+  border-radius: 8px;
   z-index: 100;
 }
 
-.dropdown {
-  display: block;
+.audio-dropdown {
+  display: flex;
   position: absolute;
-  top: 25px;
-  left: 24px;
-  z-index: 100;
+  bottom: 100px;
+  transition: opacity 1s ease-in-out;
 }
+
+.breathe-dropdown {
+  display: flex;
+  position: absolute;
+  bottom: 100px;
+  transition: opacity 1s ease-in-out;
+}
+
 
 .dropdown-content {
-  display: none;
-  position: absolute;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 10px 0px;
-  width: 30px;
-  border-radius: 25px;
+  border-radius: 8px;
+  padding: 0 10px;
 }
 
-#dropdown-display {
+#dropdown-display-audio, #dropdown-display-breathe {
   display:none;
 }
 
@@ -161,14 +142,14 @@ body {
 .dropdown-option {
   display: flex;
   align-items: center;
-  padding: 5px;
-  margin: 5px 0px;
+  margin: 5px 2px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 .dropdown-option img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  width: 26px;
+  height: 26px;
 }
 
 #breakout {
@@ -189,6 +170,8 @@ body {
 
 #help-container {
   display: none;
+  justify-content: flex-start;
+  transition: opacity 1s ease-in-out;
 }
 
 #help-textbox {
@@ -202,12 +185,6 @@ body {
   text-align: left;
 }
 
-#helpButton {
-  position: absolute;
-  bottom: 55px;
-  right: 25px;
-}
-
 .helpHeader {
   margin-bottom: 20px;
   text-align: center;
@@ -219,16 +196,40 @@ body {
 
 #backButton {
   position: absolute;
-  bottom: 50px;
+  bottom: 20px;
   margin: auto;
-  font-size: 1.2rem;
-  font-family: 'Geologica', sans-serif;
-  color: #727272;
-  background: none;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  z-index:500000;
+}
+
+.nav-item {
+  display: flex;
   text-align: center;
-  margin: 0;
-  padding: 5px 20px;
-  border: 2px solid;
-  border-radius: 100px;
-  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-item img {
+  width: 32px;
+  height: 32px;
+}
+
+.breathe-icon-text {
+  font-size: 10px;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.margin-right-small {
+  margin-right: 5px;
 }
