@@ -136,11 +136,11 @@ function breatheOut() {
 breatheIn();
 
 var breatheIcons = [
-  { name: 'Standard', src: 'img/breathe-icon/Standard.svg', option: 0},//0
-  { name: 'Calm', src: 'img/breathe-icon/Calm.svg', option: 1},//1
-  { name: 'Deep', src: 'img/breathe-icon/Deep.svg', option: 2},//2
-  { name: 'Sleep', src: 'img/breathe-icon/Sleep.svg', option: 3},//3
-  { name: 'Zen', src: 'img/breathe-icon/Zen.svg', option: 4},//4
+  { name: 'Standard', src: 'img/breathe-icon/standard.svg', option: 0},//0
+  { name: 'Calm', src: 'img/breathe-icon/calm.svg', option: 1},//1
+  { name: 'Deep', src: 'img/breathe-icon/deep.svg', option: 2},//2
+  { name: 'Sleep', src: 'img/breathe-icon/sleep.svg', option: 3},//3
+  { name: 'Zen', src: 'img/breathe-icon/zen.svg', option: 4},//4
 ];
 
 //Audio Track Selection
